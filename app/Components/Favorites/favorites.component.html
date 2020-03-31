@@ -1,0 +1,78 @@
+<body class="inventory-body">
+    <!-- There are using in *ngIf in order to show different view in case there are no favorites list -->
+    <div class="container">
+        <div class='panel panel-default' *ngIf='favoritesList && favoritesList.length;'>
+            <div class='panel-heading'>
+                <h2> {{pageTitle}}</h2>
+            </div>
+            <!-- Filter option using two ways and interpolation-->
+            <div class='panel-body' *ngIf='favoritesList && favoritesList.length;'>
+                <div class='row'>
+                    <div class='col-md-2'>Filter by City:</div>
+                    <div class='col-md-4'><input type='text' [(ngModel)]='listFilter'></div>
+                </div>
+                <div>
+                    <span class="switch-left">&deg;F</span>
+                    <label class="switch">
+                        <input type="checkbox" [(ngModel)]="isTemperatureChecked"
+                            (change)="checkTemperatureValue(isTemperatureChecked?'C':'F')">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="switch-right">&deg;C</span>
+
+                </div>
+                <div class='row' *ngIf='favoritesList && favoritesList.length;'>
+                    <div class="col-md-6">
+                        <h3>Filtered by: {{listFilter}}</h3>
+                    </div>
+                </div>
+
+                <!-- Table of favorites list using *ngFor to pass on any favorite location-->
+                <div class='table-responsive' *ngIf='favoritesList && favoritesList.length;'>
+                    <table class='table'>
+                        <thead>
+                            <tr>
+                                <th>City</th>
+                                <th>Temperature</th>
+                                <th>Weather Status</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let favoriteElement of favoritesList | FavoriteFilterPipe:listFilter'>
+                                <td>{{favoriteElement?.CityName}}</td>
+                                <td>{{favoriteElement?.Temperature | temperatureConverter : temperatureSign | number : '1.0-1' }}&deg;
+                                </td>
+                                <td>{{favoriteElement?.WeatherStatus}}</td>
+                                <!--  View Forecast button which invokes showForecast() function -->
+                                <td>
+                                    <button class='btn btn-basic' id="buttonvalue"
+                                        (click)='showForecast(favoriteElement?.Key)'>
+                                        View Forecast
+                                    </button>
+                                </td>
+                                <!--  Remove button which invokes removeFavorite() function -->
+                                <td>
+                                    <button class='btn btn-basic' id="buttonvalue"
+                                        (click)='removeFavorite(favoriteElement?.Key)'>
+                                        Remove
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--  Template div which is showed in case there are no favorites list or there is Server error -->
+        <div class="response" *ngIf='responseString && responseString.length; else falsyTemplate'>
+            <h1>{{responseString}}</h1>
+            <!--  Button which is showed in case there are no favorites list, invoke navigateHome() function-->
+            <button class='btn btn-basic' id="buttonvalue" (click)='navigateHome()' *ngIf='listIsEmpty'>
+                Add Favorites
+            </button>
+        </div>
+        <ng-template #falsyTemplate>
+        </ng-template>
+    </div>
+</body>

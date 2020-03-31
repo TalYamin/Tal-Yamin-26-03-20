@@ -1,0 +1,156 @@
+<body class="inventory-body">
+    <!-- Checkbox slide to choose temperature type-->
+    <div>
+        <span class="switch-left">&deg;F</span>
+        <label class="switch">
+            <!-- Using two way binding with ngModel with temperature sign, and onChange event to invoke checkTemperatureValue()-->
+            <input type="checkbox" [(ngModel)]="isTemperatureChecked"
+                (change)="checkTemperatureValue(isTemperatureChecked?'C':'F')">
+            <span class="slider round"></span>
+        </label>
+        <span class="switch-right">&deg;C</span>
+    </div>
+
+    <!-- Search input and autocomplete tab according to input-->
+    <div class="form-group">
+        <label class="col-md-5 control-label" for="cityName"></label>
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        <!-- Using onKeyup event to invoke getInputSearch() and onChange event to invoke initLocationView()-->
+                        <input type="text" (keyup)="getInputSearch($event)" id="inputSearchString" list="dynmicUserIds"
+                            (change)="initLocationView()" placeholder="Search a city" />
+                        <datalist id="dynmicUserIds">
+                            <!-- Using *ngFor to pass on data from API and using interpolation to insert information-->
+                            <option *ngFor="let zone of zones">{{zone?.LocalizedName}},{{zone?.Country.LocalizedName}}
+                            </option>
+                        </datalist>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Currnet information card of the required location -->
+        <div class="container">
+            
+            <div class="panel-heading">
+            <div class="row py-2">
+                <div class="col-md-12">
+                    <div class="card">
+                        <!-- Using interpolation to insert information of current location-->
+                        <div class="card-body">
+                            <h4 class="card-text">{{localName}}</h4>
+                            <!-- Using custom pipes temperatureConverter to show the 
+                            relevant temperature type and number pipe to show only one digit after point-->
+                            <h3 class="card-text">
+                                {{current[0]?.Temperature.Imperial.Value | temperatureConverter : temperatureSign | number : '1.0-1' }}&deg;
+                            </h3>
+                            <h4 class="card-text">{{current[0]?.WeatherText}}</h4>
+                            <!-- Using properties which defined in Home.ts in order to design icon-->
+                            <p class="icon"><img [src]=getCurrentIcon() [style.width.px]='upperImageWidth'
+                                    [style.margin.px]='upperImageMargin'></p>
+                        </div>
+                    </div>
+                
+                    <!-- Star icon for favorite indication -->
+                    <div class="crop" *ngIf='isFavorite'>
+                        <div>
+                            <!-- Using *ngIf according to isFavorite boolean to determine if to show the star icon-->
+                            <span class="glyphicon glyphicon-star"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <!-- Forecast Cards  -->
+                <div class="col-sm-12 col-sm-offset-0">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3>Forecast</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            <!-- Favorite Button  -->
+                            <div>
+                                <!-- When clicked invoke changeFavorite() function  -->
+                                <button class='btn btn-basic' (click)='changeFavorite()'>
+                                    {{isFavorite ? 'Remove from' : 'Add to'}} favorites
+                                </button>
+                            </div>
+
+                            <!-- For any card:
+                                (1) Using interpolation to insert information of any forecast day. 
+                                (2) Using date pipe to show only day name
+                                (3) Using custom pipes temperatureConverter to show the 
+                                    relevant temperature type and number pipe to show only one digit after point.
+                                (4) Using properties which defined in Home.ts in order to design icon
+                            -->
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{forecast?.DailyForecasts[0].Date | date:'EEEE'}}</h5>
+                                    <p class="card-text">
+                                        {{forecast?.DailyForecasts[0].Temperature.Maximum.Value | temperatureConverter : temperatureSign  | number : '1.0-1' }}&deg;
+                                        |
+                                        {{forecast?.DailyForecasts[0].Temperature.Minimum.Value | temperatureConverter : temperatureSign  | number : '1.0-1' }}&deg;
+                                    </p>
+                                    <p class="icon"><img [src]=getIcon(0) [style.width.px]='imageWidth'
+                                            [style.margin.px]='imageMargin'></p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{forecast?.DailyForecasts[1].Date | date:'EEEE'}}</h5>
+                                    <p class="card-text">
+                                        {{forecast?.DailyForecasts[1].Temperature.Maximum.Value | temperatureConverter : temperatureSign | number : '1.0-1' }}&deg;
+                                        |
+                                        {{forecast?.DailyForecasts[1].Temperature.Minimum.Value | temperatureConverter : temperatureSign | number : '1.0-1' }}&deg;
+                                    </p>
+                                    <p class="icon"><img [src]=getIcon(1) [style.width.px]='imageWidth'
+                                            [style.margin.px]='imageMargin'></p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{forecast?.DailyForecasts[2].Date | date:'EEEE'}}</h5>
+                                    <p class="card-text">
+                                        {{forecast?.DailyForecasts[2].Temperature.Maximum.Value | temperatureConverter : temperatureSign | number : '1.0-1' }}&deg;
+                                        |
+                                        {{forecast?.DailyForecasts[2].Temperature.Minimum.Value | temperatureConverter : temperatureSign | number : '1.0-1' }}&deg;
+                                    </p>
+                                    <p class="icon"><img [src]=getIcon(2) [style.width.px]='imageWidth'
+                                            [style.margin.px]='imageMargin'></p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{forecast?.DailyForecasts[3].Date | date:'EEEE'}}</h5>
+                                    <p class="card-text">
+                                        {{forecast?.DailyForecasts[3].Temperature.Maximum.Value | temperatureConverter : temperatureSign | number : '1.0-1' }}&deg;
+                                        |
+                                        {{forecast?.DailyForecasts[3].Temperature.Minimum.Value | temperatureConverter : temperatureSign | number : '1.0-1' }}&deg;
+                                    </p>
+                                    <p class="icon"><img [src]=getIcon(3) [style.width.px]='imageWidth'
+                                            [style.margin.px]='imageMargin'></p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{forecast?.DailyForecasts[4].Date | date:'EEEE'}}</h5>
+                                    <p class="card-text">
+                                        {{forecast?.DailyForecasts[4].Temperature.Maximum.Value | temperatureConverter : temperatureSign | number : '1.0-1' }}&deg;
+                                        |
+                                        {{forecast?.DailyForecasts[4].Temperature.Minimum.Value | temperatureConverter : temperatureSign | number : '1.0-1' }}&deg;
+                                    </p>
+                                    <p class="icon"><img [src]=getIcon(4) [style.width.px]='imageWidth'
+                                            [style.margin.px]='imageMargin'></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
