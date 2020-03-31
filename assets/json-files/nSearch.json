@@ -1,0 +1,152 @@
+[
+    {
+        "Version": 1,
+        "Key": "102263",
+        "Type": "City",
+        "Rank": 11,
+        "LocalizedName": "Nanning",
+        "Country": {
+            "ID": "CN",
+            "LocalizedName": "China"
+        },
+        "AdministrativeArea": {
+            "ID": "GX",
+            "LocalizedName": "Guangxi"
+        }
+    },
+    {
+        "Version": 1,
+        "Key": "105570",
+        "Type": "City",
+        "Rank": 11,
+        "LocalizedName": "Nanjing",
+        "Country": {
+            "ID": "CN",
+            "LocalizedName": "China"
+        },
+        "AdministrativeArea": {
+            "ID": "JS",
+            "LocalizedName": "Jiangsu"
+        }
+    },
+    {
+        "Version": 1,
+        "Key": "105850",
+        "Type": "City",
+        "Rank": 11,
+        "LocalizedName": "Nanchang",
+        "Country": {
+            "ID": "CN",
+            "LocalizedName": "China"
+        },
+        "AdministrativeArea": {
+            "ID": "JX",
+            "LocalizedName": "Jiangxi"
+        }
+    },
+    {
+        "Version": 1,
+        "Key": "59063",
+        "Type": "City",
+        "Rank": 13,
+        "LocalizedName": "Nanyang",
+        "Country": {
+            "ID": "CN",
+            "LocalizedName": "China"
+        },
+        "AdministrativeArea": {
+            "ID": "HA",
+            "LocalizedName": "Henan"
+        }
+    },
+    {
+        "Version": 1,
+        "Key": "60975",
+        "Type": "City",
+        "Rank": 13,
+        "LocalizedName": "Neijiang",
+        "Country": {
+            "ID": "CN",
+            "LocalizedName": "China"
+        },
+        "AdministrativeArea": {
+            "ID": "SC",
+            "LocalizedName": "Sichuan"
+        }
+    },
+    {
+        "Version": 1,
+        "Key": "61620",
+        "Type": "City",
+        "Rank": 13,
+        "LocalizedName": "Ningbo",
+        "Country": {
+            "ID": "CN",
+            "LocalizedName": "China"
+        },
+        "AdministrativeArea": {
+            "ID": "ZJ",
+            "LocalizedName": "Zhejiang"
+        }
+    },
+    {
+        "Version": 1,
+        "Key": "2333525",
+        "Type": "City",
+        "Rank": 13,
+        "LocalizedName": "New Territories",
+        "Country": {
+            "ID": "HK",
+            "LocalizedName": "Hong Kong"
+        },
+        "AdministrativeArea": {
+            "ID": "TW",
+            "LocalizedName": "Tsuen Wan"
+        }
+    },
+    {
+        "Version": 1,
+        "Key": "59588",
+        "Type": "City",
+        "Rank": 15,
+        "LocalizedName": "Nantong",
+        "Country": {
+            "ID": "CN",
+            "LocalizedName": "China"
+        },
+        "AdministrativeArea": {
+            "ID": "JS",
+            "LocalizedName": "Jiangsu"
+        }
+    },
+    {
+        "Version": 1,
+        "Key": "60980",
+        "Type": "City",
+        "Rank": 15,
+        "LocalizedName": "Nanchong",
+        "Country": {
+            "ID": "CN",
+            "LocalizedName": "China"
+        },
+        "AdministrativeArea": {
+            "ID": "SC",
+            "LocalizedName": "Sichuan"
+        }
+    },
+    {
+        "Version": 1,
+        "Key": "349727",
+        "Type": "City",
+        "Rank": 15,
+        "LocalizedName": "New York",
+        "Country": {
+            "ID": "US",
+            "LocalizedName": "United States"
+        },
+        "AdministrativeArea": {
+            "ID": "NY",
+            "LocalizedName": "New York"
+        }
+    }
+]
