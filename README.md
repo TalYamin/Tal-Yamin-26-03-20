@@ -54,4 +54,5 @@ Services implement Observing an Observable Design Pattern from RxJS library.
 ### External Api
 
 Using Accuweather API in order to fetch weather infromation according location.
+
 NOTE: this API is limited to 50 requests per day.
