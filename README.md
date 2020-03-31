@@ -10,7 +10,7 @@ In addition, User can save location as a favorite and to access their weather in
 - App-root
 
   - Home component (Routing)
-    features:
+  
     * Search input with autocomplete locations from API.
     * Current weather panel.
     * Forecast weather panel.
@@ -19,7 +19,7 @@ In addition, User can save location as a favorite and to access their weather in
     * Checkbox slide for temperature type : Fahrenheit or Celsius.
     
   - Favorites component (Routing)
-    features:
+
     * Responsive favorites table.
     * Filter input to search for specific favorite.
     * Show Forecast button by favorite location.
@@ -27,7 +27,7 @@ In addition, User can save location as a favorite and to access their weather in
     * Checkbox slide for temperature type : Fahrenheit or Celsius.
   
   - Error component (Routing)  
-     features:
+ 
     * Used in case there is server error (usually when passing the limited API requests)
     * Toasting message with relevant error
       
