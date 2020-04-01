@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TemperatureConverterPipe } from './Pipes/TemperatureConverterPipe';
 import { FavoriteFilterPipe } from './Pipes/FavoriteFilterPipe';
 import { ErrorComponent } from './Components/Error/error.component';
+import { SpinnerComponent } from './Components/Spinner/spinner.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ErrorComponent } from './Components/Error/error.component';
     HomeComponent,
     favoritesComponent,
     ErrorComponent,
+    SpinnerComponent,
     TemperatureConverterPipe,
     FavoriteFilterPipe
     
