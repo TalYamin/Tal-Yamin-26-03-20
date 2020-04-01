@@ -28,7 +28,7 @@ In addition, User can save location as a favorite and to access their weather in
     
    - Spinner component   
  
-     * Used in case loading is needed until data is fetched from api
+     * Used in case loading is needed until data is fetched from API
   
   - Error component   
  
