@@ -43,6 +43,7 @@ export class HomeComponent implements OnInit {
   cityList: ICity[] = [];
 
   /* Utils Properties */
+  showSpinner: boolean = true;
   responseString: string;
   homeSubscription: Subscription = null;
 
@@ -225,6 +226,7 @@ export class HomeComponent implements OnInit {
     this.homeSubscription = this.weatherService.getForecast(locationKey).subscribe(
       (data) => {
         this.forecast = data;
+        this.showSpinner = false;
       },
       (err) => { console.log(err); this.responseString = err;  this._router.navigate(["/error"]); }
     )

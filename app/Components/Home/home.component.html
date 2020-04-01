@@ -14,13 +14,13 @@
     <!-- Search input and autocomplete tab according to input-->
     <div class="form-group">
         <label class="col-md-5 control-label" for="cityName"></label>
-        <div>
+        <div >
             <table>
                 <tr>
                     <td>
                         <!-- Using onKeyup event to invoke getInputSearch() and onChange event to invoke initLocationView()-->
                         <input type="text" (keyup)="getInputSearch($event)" id="inputSearchString" list="dynmicUserIds"
-                            (change)="initLocationView()" placeholder="Search a city" />
+                            (change)="initLocationView()" placeholder="Search a city"/>
                         <datalist id="dynmicUserIds">
                             <!-- Using *ngFor to pass on data from API and using interpolation to insert information-->
                             <option *ngFor="let zone of zones">{{zone?.LocalizedName}},{{zone?.Country.LocalizedName}}
@@ -32,8 +32,8 @@
         </div>
 
         <!-- Currnet information card of the required location -->
-        <div class="container">
-            
+        <app-spinner *ngIf = 'showSpinner'></app-spinner>
+        <div class="container" *ngIf = '!showSpinner'>
             <div class="panel-heading">
             <div class="row py-2">
                 <div class="col-md-12">
@@ -64,7 +64,7 @@
             </div>
 
                 <!-- Forecast Cards  -->
-                <div class="col-sm-12 col-sm-offset-0">
+                <div class="col-sm-12 col-sm-offset-0" *ngIf = '!showSpinner'>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3>Forecast</h3>
