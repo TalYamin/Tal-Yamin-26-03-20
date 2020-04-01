@@ -25,6 +25,10 @@ In addition, User can save location as a favorite and to access their weather in
     * Show Forecast button by favorite location.
     * Remove Favorite button.
     * Checkbox slide for temperature type : Fahrenheit or Celsius.
+    
+   - Spinner component   
+ 
+     * Used in case loading is needed until data is fetched from api
   
   - Error component   
  
@@ -50,7 +54,7 @@ Services implement Observing an Observable Design Pattern from RxJS library.
 ### Stack Information
 
 * Angular 
-* Bootstrap - UI library 
+* Bootstrap
 * RxJS
 
 ### External Api
@@ -60,4 +64,4 @@ Using Accuweather API in order to fetch weather infromation according location.
 NOTE: this API is limited to 50 requests per day.
 
 ### URL
-https://weather-app-tal-yamin.herokuapp.com/
+https://weather-app-talyamin.herokuapp.com/
