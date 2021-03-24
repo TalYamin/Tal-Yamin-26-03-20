@@ -1,4 +1,4 @@
-# Weather App Task
+# Weather App 
 
 This app is used to show the weather of some locations.
 User can search a location and to watch the current weather and 5 days forecast.
